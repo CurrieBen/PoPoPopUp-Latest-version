@@ -1,3 +1,48 @@
 body {
+  box-sizing: border-box;
+}
+.Behind {
+  height: 600px;
+  background-color: yellow;
+}
+
+.policemen {
+  position: absolute;
   background-color: red;
+  left: 50px;
+  width: 90px;
+  height: 90px;
+  margin-top: 2%;
+}
+
+.Wall {
+  background-color: blue;
+  height: 300px;
+  display: block;
+  margin-top: 10%;
+}
+
+.gArtist {
+  position: absolute;
+  background-color: #abc;
+  left: 50px;
+  width: 90px;
+  height: 180px;
+  margin-top: 10%;
+}
+
+#left{
+  margin-left: 40%;
+  height: 50px;
+  width: 100px;
+  background-color: gold;
+  border: 2px solid green;
+}
+
+#right{
+  margin-right: 40%;
+  height: 50px;
+  width: 100px;
+  background-color: gold;
+  border: 2px solid green;
 }
