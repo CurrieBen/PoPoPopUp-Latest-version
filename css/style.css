@@ -9,23 +9,25 @@ body {
 .policemen {
   position: absolute;
   background-color: red;
-  left: 50px;
   width: 90px;
   height: 90px;
-  margin-top: 2%;
+  left: 150px;
+  margin-top: 5%;
 }
 
 .Wall {
   background-color: blue;
   height: 300px;
+  margin: 8%;
   display: block;
   margin-top: 10%;
+  z-index: 1;
 }
 
 .gArtist {
   position: absolute;
   background-color: #abc;
-  left: 50px;
+  margin-left: 25px;
   width: 90px;
   height: 180px;
   margin-top: 10%;
@@ -37,6 +39,7 @@ body {
   width: 100px;
   background-color: gold;
   border: 2px solid green;
+  outline: 0 !important;
 }
 
 #right{
@@ -45,4 +48,5 @@ body {
   width: 100px;
   background-color: gold;
   border: 2px solid green;
+  outline: 0 !important;
 }
