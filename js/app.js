@@ -5,6 +5,9 @@ function setup() {
   const $right = $('#right');
   const $left = $('#left');
   const $will = $('.gArtist');
+  const $section = $('.graff');
+  let i = 0.1;
+  let x = 0.1;
   const randomTime = Math.ceil(Math.random()*8500);
   const randomTimeUp = Math.ceil(Math.random()*3000);
   const randomTimeDown = Math.ceil(Math.random()*10000);
@@ -31,6 +34,8 @@ function setup() {
   function sprayWall() {
     // find the div covering the current wall section
     // update the opacity of that div
+    $section.css('opacity', i);
+    i = i+x;
   }
 
   function policeUp() {

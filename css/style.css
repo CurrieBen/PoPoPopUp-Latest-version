@@ -38,6 +38,7 @@ body {
   background-image: url(/Users/123THC/development/project1/images/graff2.png);
   background-position: center;
   background-attachment: fixed;
+  opacity: 0;
   width: 50px;
   height: 300px;
   padding: 0px;
