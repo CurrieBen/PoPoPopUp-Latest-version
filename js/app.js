@@ -16,13 +16,14 @@ function setup() {
 
 
   function appear(){
-    $police.animate({ top: 0 }, randomTimeUp, down());
+    // $police.animate({ top: 0 }, randomTimeUp, down()); having down at the end is the complete part and it means that it will run this function once the rest has completed
+    $police.animate({ top: 0 }, randomTimeUp);
   }
 
   // Create a function that makes the image go back to it's previous position. Below does not work - need to work on this
-  function down(){
-    $police.animate({ bottom: 200 }, randomTimeDown);
-  }
+  // function down(){
+  //   $police.animate({ bottom: 200 }, randomTimeDown);
+  // }
 
   function moveRight(){
     $will.animate({ left: '+=53px' }, 'slow');
