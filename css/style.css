@@ -3,7 +3,7 @@ body {
   margin: 0 auto;
 }
 .Behind {
-  height: 450px;
+  height: 440px;
   background-color: yellow;
 }
 
@@ -22,12 +22,29 @@ body {
 .Wall {
   background-image: url(/Users/123THC/development/project1/images/brick.jpg);
   background-size: contain;
-  height: 300px;
+  height: 350px;
   margin: 8%;
   display: block;
   margin-top: 10%;
   background-position: center;
   z-index: 2;
+}
+
+.container {
+  margin-left: 20%;
+}
+
+.graff {
+  background-image: url(/Users/123THC/development/project1/images/graff2.png);
+  background-position: center;
+  background-attachment: fixed;
+  width: 50px;
+  height: 300px;
+  padding: 0px;
+  border: 1px solid yellow;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
 }
 
 .gArtist {
@@ -43,8 +60,9 @@ body {
 }
 
 .Pavement {
-  height: 250px;
+  height: 200px;
   background-color: pink;
+  z-index: 1;
 }
 
 #left{

@@ -21,11 +21,11 @@ function setup() {
   }
 
   function moveRight(){
-    $will.animate({ left: '+=50px' }, 'slow');
+    $will.animate({ left: '+=53px' }, 'slow');
   }
 
   function moveLeft(){
-    $will.animate({ left: '-=50px' }, 'slow');
+    $will.animate({ left: '-=53px' }, 'slow');
   }
 
   function sprayWall() {
