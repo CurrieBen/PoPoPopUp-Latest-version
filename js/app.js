@@ -10,6 +10,8 @@ function setup() {
   const $begin = $('.play');
   const $scoreboard = $('.score');
   const $warning = $('.warning');
+  const $timer = $('.time');
+  const $shake = $('.shake');
   let currentSection = 0;
   const x = 0.03;
   let mousedown = false;
@@ -23,13 +25,26 @@ function setup() {
   let newOpacity = null;
   let score = 0;
   let warnings = 0;
+  let timeRemaining = 60;
 
   $begin.on('click' , ()=>{
-    $('html, body').animate({
-      scrollTop: $begin.offset().top
-    }, 2000);
+    $('html, body').animate({ scrollTop: $(document).height() }, 2000);
     event.preventDefault();
   });
+
+  function startTime() {
+    // showInput();
+    setInterval(() => {
+      if (timeRemaining > 0) {
+        timeRemaining--;
+        $timer.html('Time Remaining: '+timeRemaining);
+      }
+    }, 1000);
+  }
+
+  function firstSound() {
+    $shake.play();
+  }
 
 
   function appear(){
@@ -44,7 +59,7 @@ function setup() {
     policeInSight = true;
     console.log(policeInSight);
     setTimeout(() => {
-      $police.animate({ top: 950 }, randomTimeDown, policeUp);
+      $police.animate({ top: 890 }, randomTimeDown, policeUp);
     }, randomTime);
   }
 
@@ -85,7 +100,9 @@ function setup() {
     newOpacity = currentOpacity + x;
     $section.eq(currentSection).css('opacity', newOpacity);
     console.log(currentOpacity);
-    score++;
+    if (parseFloat(newOpacity)<1){
+      score++;
+    }
     $scoreboard.html('Score: ' + score);
     checkCaught();
     checkWin();
@@ -113,7 +130,6 @@ function setup() {
       $warning.css('color', '#f00');
     }
     if (warnings === 2){
-      $warning.css('font-size', '35px');
       setInterval(blinker, 500);
     }
     if (warnings === 3){
@@ -138,10 +154,12 @@ function setup() {
   $right
     .on('mousedown', sprayWall)
     .on('click', policeUp)
+    .on('click', startTime)
     .on('mouseup', moveRight);
   $left
     .on('mousedown', moveLeft)
     .on('mouseup', turnAround);
+  $begin.on('click', firstSound);
 }
 
 $(() => setup());
