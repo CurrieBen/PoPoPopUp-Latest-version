@@ -24,10 +24,8 @@ function setup() {
   let mousedown = false;
   let policeInSight = false;
   const randomTime = Math.ceil(Math.random()*8500);
-  const timeUp = 2500;
-  const randomTimeDown = Math.ceil(Math.random()*3000);
-  console.log(randomTime);
-  console.log(randomTimeDown);
+  const timeUp = 2000;
+  const timeDown = 2000;
   let currentOpacity = null;
   let newOpacity = null;
   let score = 0;
@@ -62,25 +60,20 @@ function setup() {
 
 
   function appear(){
-    // $police.animate({ top: 0 }, timeUp, down()); having down at the end is the complete part and it means that it artist run this function once the rest has completed
     console.log('inside appear()');
-    $police.animate({ top: 800 }, timeUp, disappear);
+    $police.animate({ top: 790 }, timeUp, disappear);
   }
 
-  // Create a function that makes the image go back to it's previous position. Below does not work - need to work on this
   function disappear(){
-    console.log('inside disappear()');
     policeInSight = true;
-    console.log(policeInSight);
     setTimeout(() => {
-      $police.animate({ top: 880 }, randomTimeDown, policeUp);
+      $police.animate({ top: 880 }, timeDown, policeUp);
     }, randomTime);
   }
 
   function moveRight(){
     $artist.animate({ left: '+=53px' }, 'slow');
     currentSection++;
-    console.log(currentSection);
     $artist.css('transform', 'scaleX(1)');
   }
 
@@ -88,7 +81,6 @@ function setup() {
     $artist.animate({ left: '-=53px' }, 'slow');
     currentSection--;
     $artist.css('transform', 'scaleX(-1)');
-    console.log(currentSection);
   }
 
   function turnAround() {
@@ -113,7 +105,6 @@ function setup() {
     currentOpacity = parseFloat($section.eq(currentSection).css('opacity'));
     newOpacity = currentOpacity + x;
     $section.eq(currentSection).css('opacity', newOpacity);
-    console.log(currentOpacity);
     if (parseFloat(newOpacity)<1){
       score++;
     }
@@ -123,7 +114,6 @@ function setup() {
 
   function policeUp() {
     policeInSight = false;
-    console.log('inside policeUp()');
     setTimeout(() => {
       appear();
     }, randomTime);

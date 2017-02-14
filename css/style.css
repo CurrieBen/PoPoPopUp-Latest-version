@@ -34,10 +34,6 @@ html.locked, html.locked body {
   width: 250px;
 }
 
-/*.behind {
-  background-color: #22f;
-}*/
-
 .score {
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
