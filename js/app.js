@@ -5,25 +5,37 @@ function setup() {
   const $police = $('.policemen');
   const $right = $('#right');
   const $left = $('#left');
-  const $will = $('.gArtist');
+  const $artist = $('.gArtist');
   const $section = $('.graff');
-  // const $everything = $('*');
+  const $begin = $('.play');
+  const $scoreboard = $('.score');
+  const $warning = $('.warning');
   let currentSection = 0;
-  // let i = 0.1;
   const x = 0.03;
   let mousedown = false;
   let policeInSight = false;
   const randomTime = Math.ceil(Math.random()*8500);
   const randomTimeUp = Math.ceil(Math.random()*3000);
-  const randomTimeDown = Math.ceil(Math.random()*10000);
+  const randomTimeDown = Math.ceil(Math.random()*3000);
   console.log(randomTime);
   console.log(randomTimeDown);
+  let currentOpacity = null;
+  let newOpacity = null;
+  let score = 0;
+  let warnings = 0;
+
+  $begin.on('click' , ()=>{
+    $('html, body').animate({
+      scrollTop: $begin.offset().top
+    }, 2000);
+    event.preventDefault();
+  });
 
 
   function appear(){
-    // $police.animate({ top: 0 }, randomTimeUp, down()); having down at the end is the complete part and it means that it will run this function once the rest has completed
+    // $police.animate({ top: 0 }, randomTimeUp, down()); having down at the end is the complete part and it means that it artist run this function once the rest has completed
     console.log('inside appear()');
-    $police.animate({ top: 0 }, randomTimeUp, disappear);
+    $police.animate({ top: 805 }, randomTimeUp, disappear);
   }
 
   // Create a function that makes the image go back to it's previous position. Below does not work - need to work on this
@@ -32,20 +44,26 @@ function setup() {
     policeInSight = true;
     console.log(policeInSight);
     setTimeout(() => {
-      $police.animate({ top: 140 }, randomTimeDown, policeUp);
+      $police.animate({ top: 950 }, randomTimeDown, policeUp);
     }, randomTime);
   }
 
   function moveRight(){
-    $will.animate({ left: '+=53px' }, 'slow');
+    $artist.animate({ left: '+=53px' }, 'slow');
     currentSection++;
     console.log(currentSection);
+    $artist.css('transform', 'scaleX(1)');
   }
 
   function moveLeft(){
-    $will.animate({ left: '-=53px' }, 'slow');
+    $artist.animate({ left: '-=53px' }, 'slow');
     currentSection--;
+    $artist.css('transform', 'scaleX(-1)');
     console.log(currentSection);
+  }
+
+  function turnAround() {
+    $artist.css('transform', 'scaleX(1)');
   }
 
   var slowly;
@@ -63,11 +81,14 @@ function setup() {
   function sprayWall() {
     // find the div covering the current wall section
     // update the opacity of that div
-    const currentOpacity = parseFloat($section.eq(currentSection).css('opacity'));
-    const newOpacity = currentOpacity + x;
+    currentOpacity = parseFloat($section.eq(currentSection).css('opacity'));
+    newOpacity = currentOpacity + x;
     $section.eq(currentSection).css('opacity', newOpacity);
-
+    console.log(currentOpacity);
+    score++;
+    $scoreboard.html('Score: ' + score);
     checkCaught();
+    checkWin();
   }
 
   function policeUp() {
@@ -83,17 +104,33 @@ function setup() {
     }, randomTime);
   }
 
-  //Function to make policeman go down is not working yet
-  //  function policeDown() {
-  //  setInterval(down, 10000);
-  //  policeInSight = false;
-  // }
-
   function checkCaught() {
     if (mousedown === true && policeInSight === true){
-      //change the image below to something better when you get caught
-      // $everything.css('background-image', 'url(/Users/123THC/development/project1/images/joke.jpg)');
-      console.log('You\'re nicked guv!');
+      warnings++;
+      $warning.html('Warnings: ' + warnings);
+    }
+    if (warnings >= 1){
+      $warning.css('color', '#f00');
+    }
+    if (warnings === 2){
+      $warning.css('font-size', '35px');
+      setInterval(blinker, 500);
+    }
+    if (warnings === 3){
+      //some code to stop everything and offer reset button
+    }
+  }
+
+
+  function blinker() {
+    $warning.fadeOut(200);
+    $warning.fadeIn(200);
+  }
+
+
+  function checkWin() {
+    if(parseFloat(currentOpacity) === 1 && parseFloat(newOpacity) >= 1){
+      console.log('You win!');
     }
   }
 
@@ -102,7 +139,9 @@ function setup() {
     .on('mousedown', sprayWall)
     .on('click', policeUp)
     .on('mouseup', moveRight);
-  $left.on('click', moveLeft);
+  $left
+    .on('mousedown', moveLeft)
+    .on('mouseup', turnAround);
 }
 
 $(() => setup());
