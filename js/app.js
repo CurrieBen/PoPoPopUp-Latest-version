@@ -2,6 +2,10 @@ console.log('JS loaded');
 
 function setup() {
 
+  $(window).on('beforeunload', function() {
+    $(window).scrollTop(0);
+  });
+
   const $police = $('.policemen');
   const $right = $('#right');
   const $left = $('#left');
@@ -12,12 +16,15 @@ function setup() {
   const $warning = $('.warning');
   const $timer = $('.time');
   const $shake = $('.shake');
+  // const $winning = $('.winning');
+  const $bottomSection = $('.behind');
+  // const $tryAgain = $('.tryAgain');
   let currentSection = 0;
   const x = 0.03;
   let mousedown = false;
   let policeInSight = false;
   const randomTime = Math.ceil(Math.random()*8500);
-  const randomTimeUp = Math.ceil(Math.random()*3000);
+  const timeUp = 2500;
   const randomTimeDown = Math.ceil(Math.random()*3000);
   console.log(randomTime);
   console.log(randomTimeDown);
@@ -25,10 +32,13 @@ function setup() {
   let newOpacity = null;
   let score = 0;
   let warnings = 0;
-  let timeRemaining = 60;
+  let timeRemaining = 120;
 
   $begin.on('click' , ()=>{
-    $('html, body').animate({ scrollTop: $(document).height() }, 2000);
+    firstSound();
+    $('html, body').animate({ scrollTop: $(document).height() }, 2000, () => {
+      $('html').addClass('locked');
+    });
     event.preventDefault();
   });
 
@@ -37,20 +47,24 @@ function setup() {
     setInterval(() => {
       if (timeRemaining > 0) {
         timeRemaining--;
+        checkWin();
         $timer.html('Time Remaining: '+timeRemaining);
       }
     }, 1000);
   }
 
   function firstSound() {
-    $shake.play();
+    $shake[0].play();
+    setTimeout(function(){
+      $shake[0].pause();
+    },2500);
   }
 
 
   function appear(){
-    // $police.animate({ top: 0 }, randomTimeUp, down()); having down at the end is the complete part and it means that it artist run this function once the rest has completed
+    // $police.animate({ top: 0 }, timeUp, down()); having down at the end is the complete part and it means that it artist run this function once the rest has completed
     console.log('inside appear()');
-    $police.animate({ top: 805 }, randomTimeUp, disappear);
+    $police.animate({ top: 800 }, timeUp, disappear);
   }
 
   // Create a function that makes the image go back to it's previous position. Below does not work - need to work on this
@@ -59,7 +73,7 @@ function setup() {
     policeInSight = true;
     console.log(policeInSight);
     setTimeout(() => {
-      $police.animate({ top: 890 }, randomTimeDown, policeUp);
+      $police.animate({ top: 880 }, randomTimeDown, policeUp);
     }, randomTime);
   }
 
@@ -81,7 +95,7 @@ function setup() {
     $artist.css('transform', 'scaleX(1)');
   }
 
-  var slowly;
+  let slowly = 0;
 
   $('#right').mousedown(function(){
     slowly = setInterval(function() {
@@ -89,8 +103,8 @@ function setup() {
       sprayWall();
     }, 100);
   }).mouseup(function() {
-    clearInterval(slowly);
     mousedown = false;
+    clearInterval(slowly);
   });
 
   function sprayWall() {
@@ -105,17 +119,11 @@ function setup() {
     }
     $scoreboard.html('Score: ' + score);
     checkCaught();
-    checkWin();
   }
 
   function policeUp() {
     policeInSight = false;
     console.log('inside policeUp()');
-    // setInterval(appear, randomTime);
-    // setTimeout( function() {
-    //   policeInSight = true;
-    // }, randomTime+randomTimeUp);
-    // setInterval(disappear, randomTime+randomTimeUp);
     setTimeout(() => {
       appear();
     }, randomTime);
@@ -143,23 +151,27 @@ function setup() {
     $warning.fadeIn(200);
   }
 
-
   function checkWin() {
-    if(parseFloat(currentOpacity) === 1 && parseFloat(newOpacity) >= 1){
-      console.log('You win!');
+    if(timeRemaining === 0 && warnings < 3 ){
+      // $winning.css('visibility', 'visible');
+      // $winning.html('Sick One Blud! You got '+ Math.round(score/3.96) + '% of the painting done!');
+      $bottomSection.css('visibility', 'hidden');
     }
   }
+
+  // function reset() {
+  //
+  // }
 
 
   $right
     .on('mousedown', sprayWall)
     .on('click', policeUp)
-    .on('click', startTime)
+    .on('mousedown', startTime)
     .on('mouseup', moveRight);
   $left
     .on('mousedown', moveLeft)
     .on('mouseup', turnAround);
-  $begin.on('click', firstSound);
 }
 
 $(() => setup());

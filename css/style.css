@@ -3,15 +3,19 @@ body {
   margin: 0 auto;
 }
 
+html.locked, html.locked body {
+  overflow: hidden;
+}
+
 .menu {
-  height: 750px;
+  height: 100vh;
   max-width: 1600px;
   background-color: black;
 }
 
 .poPoPopUp {
-  margin-top: 1%;
-  margin-left: 18%;
+  margin: auto;
+  display: block;
 }
 
 .HowToPlay {
@@ -29,6 +33,10 @@ body {
   height: 150px;
   width: 250px;
 }
+
+/*.behind {
+  background-color: #22f;
+}*/
 
 .score {
   font-family: 'Gloria Hallelujah', cursive;
@@ -58,9 +66,21 @@ body {
   font-size: 30px;
 }
 
+.winning {
+  height: 250px;
+  width: 300px;
+  font-size: 60px;
+  text-align: center;
+  color: #f00;
+  font-family: 'Caveat Brush', cursive;
+  margin-left: 10%;
+  display: inline;
+  visibility: hidden;
+}
+
 .policemen {
   position: absolute;
-  background-image: url(/Users/123THC/development/project1/images/policeman.png);
+  background-image: url(../images/policeman.png);
   background-size: contain;
   background-repeat: no-repeat;
   width: 200px;
@@ -72,7 +92,7 @@ body {
 }
 
 .Wall {
-  background-image: url(/Users/123THC/development/project1/images/brick.png);
+  background-image: url(../images/brick.png);
   background-size: contain;
   height: 350px;
   margin: 8%;
@@ -88,7 +108,7 @@ body {
 }
 
 .graff {
-  background-image: url(/Users/123THC/development/project1/images/graff2.png);
+  background-image: url(../images/graff2.png);
   background-position: center;
   background-attachment: fixed;
   opacity: 0;
@@ -102,7 +122,7 @@ body {
 
 .gArtist {
   position: absolute;
-  background-image: url(/Users/123THC/development/project1/images/graff.png);
+  background-image: url(../images/graff.png);
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 131px;
@@ -116,6 +136,7 @@ body {
   height: 80px;
   background-color: pink;
   z-index: 1;
+  overflow: auto;
 }
 
 #left{
