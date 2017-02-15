@@ -80,13 +80,25 @@ function setup() {
 
   function appear(){
     console.log('inside appear()');
+    console.log(policeInSight);
     $police.animate({ top: 775 }, timeUp, disappear);
   }
 
   function disappear(){
     policeInSight = true;
+    console.log('inside disappear()');
+    console.log(policeInSight);
     setTimeout(() => {
-      $police.animate({ top: 867 }, timeDown, policeUp);
+      $police.animate({ top: 874 }, timeDown, policeUp);
+    }, randomTime);
+  }
+
+  function policeUp() {
+    policeInSight = false;
+    console.log('inside policeUp()');
+    console.log(policeInSight);
+    setTimeout(() => {
+      appear();
     }, randomTime);
   }
 
@@ -127,13 +139,6 @@ function setup() {
     }
     $scoreboard.html('Completed: ' + Math.round(score/5.28) + ' %');
     checkCaught();
-  }
-
-  function policeUp() {
-    policeInSight = false;
-    setTimeout(() => {
-      appear();
-    }, randomTime);
   }
 
   function checkCaught() {
