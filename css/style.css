@@ -73,7 +73,7 @@ html.locked, html.locked body {
   font-size: 25px;
 }
 
-.winning {
+.outcome {
   width: 100%;
   font-size: 60px;
   text-align: center;
@@ -108,14 +108,6 @@ html.locked, html.locked body {
   left: 30px;
   transform: translateY(-50%);
 }
-
-/*.winningBackground {
-  background-image: url(../images/winningbackground.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  visibility: hidden;
-  z-index: -2;
-}*/
 
 .policemen {
   position: absolute;

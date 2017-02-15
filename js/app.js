@@ -16,9 +16,8 @@ function setup() {
   const $warning = $('.warning');
   const $timer = $('.time');
   const $shake = $('.shake');
-  const $winning = $('.winning');
+  const $outcome = $('.outcome');
   const $menu = $('.menu');
-  // const $winningBackground = $('.winningBackground');
   const $tryAgain = $('.tryAgain');
   const $howToGuide = $('.howToGuide');
   const $info = $('.howToPlay');
@@ -28,7 +27,7 @@ function setup() {
   let policeInSight = false;
   const randomTime = Math.ceil(Math.random()*8500);
   const timeUp = 2000;
-  const timeDown = 2000;
+  const timeDown = 1500;
   let currentOpacity = null;
   let newOpacity = null;
   let score = 0;
@@ -76,7 +75,6 @@ function setup() {
       $shake[0].pause();
     },2500);
   }
-
 
   function appear(){
     console.log('inside appear()');
@@ -137,7 +135,7 @@ function setup() {
     if (parseFloat(newOpacity)<1){
       score++;
     }
-    $scoreboard.html('Completed: ' + Math.round(score/5.28) + ' %');
+    $scoreboard.html('Completed: ' + Math.round(score/5.28) + '%');
     checkCaught();
   }
 
@@ -153,7 +151,24 @@ function setup() {
       blinkerInterval = setInterval(blinker, 500);
     }
     if (warnings === 3){
-      //some code to stop everything and offer reset button
+      $outcome.html('Unlucky bruvva! Maybe try and wait till the popo aint lookin\' next time! Have another crack when you\'re ready...');
+      clearInterval(intervalId);
+      policeInSight = false;
+      mousedown = false;
+      $scoreboard.html('Completed: 0%');
+      $warning.html('Warnings: 0');
+      $warning.css('color', '#000');
+      $section.css('opacity', '0');
+      $artist.css('left', 'auto');
+      clearInterval(blinkerInterval);
+      currentOpacity = null;
+      newOpacity = null;
+      score = 0;
+      warnings = 0;
+      timeRemaining = 120;
+      currentSection = 0;
+      $timer.html('Time Remaining: '+timeRemaining);
+      $(window).scrollTop(0);
     }
   }
 
@@ -165,13 +180,8 @@ function setup() {
 
   function checkWin() {
     if(timeRemaining === 0 && warnings < 3 ){
-      // $menu.css('visibility', 'hidden');
-      // $winningBackground.css('visibility', 'visible');
-      $winning.html('Sick One Blud! You got '+ Math.round(score/5.28) + '% of the painting done!');
-      // $winning.css('visibility', 'visible');
-      // $tryAgain.css('visibility', 'visible');
+      $outcome.html('Sick One Blud! You got '+ Math.round(score/5.28) + '% of the painting done!');
       $(window).scrollTop(0);
-      // console.log('working');
     }
   }
 
@@ -180,7 +190,7 @@ function setup() {
     policeInSight = false;
     mousedown = false;
     $menu.addClass('intro');
-    $winning.html('');
+    $outcome.html('');
     $scoreboard.html('Completed: 0%');
     $warning.html('Warnings: 0');
     $warning.css('color', '#000');
