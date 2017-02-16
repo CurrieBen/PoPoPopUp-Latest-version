@@ -97,9 +97,7 @@ function setup() {
   }
 
   function spraySound() {
-    if (currentSection < 16){
-      $spraySound[0].play();
-    }
+    $spraySound[0].play();
   }
 
   function appear(){
@@ -182,6 +180,7 @@ function setup() {
     if (warnings === 3){
       $outcome.html('Unlucky bruvva! Maybe try and wait till the popo aint lookin\' next time! Have another crack when you\'re ready...');
       mostResetChanges();
+      clearInterval(blinkerInterval);
     }
   }
 
@@ -199,14 +198,11 @@ function setup() {
 
   function mostResetChanges() {
     clearInterval(intervalId);
-    clearInterval(blinkerInterval);
     policeInSight = false;
     mousedown = false;
     $scoreboard.html('Completed: 0%');
     $warning.html('Warnings: 0');
     $warning.css('color', '#000');
-    $warning.fadeOut(0);
-    $warning.fadeIn(0);
     $section.css('opacity', '0');
     $artist.css('left', 'auto');
     currentOpacity = null;
