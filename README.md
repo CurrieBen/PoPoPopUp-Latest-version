@@ -8,7 +8,7 @@
 
 This is a game of patience and timing. You need both to be successful! The aim of the game is to complete the painting before the timer runs out whilst also trying to avoid being caught by the policeman as he appears from behind the wall at random intervals.
 
-#####[Play it here!](https://hangman-wdi-one.herokuapp.com/ "Here!")
+#####[Play it here!](https://afternoon-harbor-39704.herokuapp.com/)
 
 
 ![](./images/PoPoPopUpMain.png)
@@ -38,7 +38,7 @@ There are sounds that are triggered upon:
 ####The build
 
 * HTML 5, CSS and jQuery were used to create this game.
-* Animation was created using the Animate.css stylesheet.
+* Animation was done using jQuery.
 * The Google Web Font 'Gloria Hallelujah' and 'Caveat Brush' have been used to style the game.
 
 ![](./images/PoPoPopUpMidGame.png)

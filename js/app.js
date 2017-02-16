@@ -44,7 +44,7 @@ function setup() {
   let blinkerInterval = null;
   let slowly = null;
 
-  $begin.on('click' , ()=>{
+  function openingSequence() {
     firstSound();
     gameSoundBegin();
     startTime();
@@ -60,7 +60,7 @@ function setup() {
     });
     menuSoundEnd();
     event.preventDefault();
-  });
+  }
 
   function startTime() {
     intervalId = setInterval(() => {
@@ -227,6 +227,7 @@ function setup() {
     mostResetChanges();
   }
 
+  $begin.on('click', openingSequence);
   $right
     .on('mousedown', startSpraying)
     .on('mousedown', sprayWall)
