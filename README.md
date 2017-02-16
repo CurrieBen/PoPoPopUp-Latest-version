@@ -46,4 +46,4 @@ There are sounds that are triggered upon:
 
 #### Problems & Challenges
 
-The main problem I had with this game was knowing which divs opacity should change based on where the player is stood in relation to the wall. The way I managed to do this was by adding 1 to a variable every time the player moved right and subtracting 1 from the same variable every time they moved left. I was then able to use this variable as the index number for which div's opacity should be changing which worked really well. Given more time I would like to have made the game more responsive as currently it only also works with an ipad screen horizontally.
+The main problem I had with this game was knowing which divs opacity should change based on where the player is stood in relation to the wall. The way I managed to do this was by adding 1 to a variable every time the player moved right and subtracting 1 from the same variable every time they moved left. I was then able to use this variable as the index number for which div's opacity should be changing which worked really well. Given more time I would like to have made the game more responsive.
