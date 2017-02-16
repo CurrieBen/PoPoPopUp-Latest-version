@@ -1,5 +1,13 @@
 console.log('JS loaded');
 
+//sort out blinker on reset
+//sort out bug when mouse moves off contain
+//put in sounds
+//perhaps add pavement and background picture
+//refactor
+//namespace
+
+
 function setup() {
 
   $(window).on('beforeunload', function() {
@@ -16,18 +24,20 @@ function setup() {
   const $warning = $('.warning');
   const $timer = $('.time');
   const $shake = $('.shake');
+  const $menuMusic = $('.menu-music');
+  const $gameMusic = $('.game-track');
   const $outcome = $('.outcome');
   const $menu = $('.menu');
   const $tryAgain = $('.tryAgain');
   const $howToGuide = $('.howToGuide');
   const $info = $('.howToPlay');
-  let currentSection = 0;
-  const x = 0.03;
-  let mousedown = false;
-  let policeInSight = false;
   const randomTime = Math.ceil(Math.random()*8500);
   const timeUp = 2000;
   const timeDown = 1500;
+  const x = 0.03;
+  let currentSection = 0;
+  let mousedown = false;
+  let policeInSight = false;
   let currentOpacity = null;
   let newOpacity = null;
   let score = 0;
@@ -37,8 +47,10 @@ function setup() {
   let blinkerInterval = null;
   let slowly = null;
 
+
   $begin.on('click' , ()=>{
     firstSound();
+    gameSoundBegin();
     startTime();
     setTimeout(() => {
       policeUp();
@@ -49,6 +61,7 @@ function setup() {
     $('html, body').animate({ scrollTop: $(document).height() }, 2000, () => {
       $('html').addClass('locked');
     });
+    menuSoundEnd();
     event.preventDefault();
   });
 
@@ -73,6 +86,16 @@ function setup() {
     $shake[0].play();
     setTimeout(function(){
       $shake[0].pause();
+    },2500);
+  }
+
+  function menuSoundEnd() {
+    $menuMusic[0].pause();
+  }
+
+  function gameSoundBegin() {
+    setTimeout(function(){
+      $gameMusic[0].play();
     },2500);
   }
 
@@ -180,7 +203,7 @@ function setup() {
 
   function checkWin() {
     if(timeRemaining === 0 && warnings < 3 ){
-      $outcome.html('Sick One Blud! You got '+ Math.round(score/5.28) + '% of the painting done!');
+      $outcome.html('Nice one Bruvva! You got '+ Math.round(score/5.28) + '% of the painting done!');
       $(window).scrollTop(0);
     }
   }
@@ -189,6 +212,8 @@ function setup() {
     clearInterval(intervalId);
     policeInSight = false;
     mousedown = false;
+    $gameMusic[0].pause();
+    $menuMusic[0].play();
     $menu.addClass('intro');
     $outcome.html('');
     $scoreboard.html('Completed: 0%');
