@@ -1,10 +1,5 @@
 console.log('JS loaded');
 
-//sort out blinker on reset
-//sort out bug when mouse moves off contain
-//put in sounds
-//perhaps add pavement and background picture
-//refactor
 //namespace
 
 
@@ -14,6 +9,7 @@ function setup() {
     $(window).scrollTop(0);
   });
 
+  const $body = $('body');
   const $police = $('.policemen');
   const $right = $('#right');
   const $left = $('#left');
@@ -26,6 +22,7 @@ function setup() {
   const $shake = $('.shake');
   const $menuMusic = $('.menu-music');
   const $gameMusic = $('.game-track');
+  const $spraySound = $('.spraySound');
   const $outcome = $('.outcome');
   const $menu = $('.menu');
   const $tryAgain = $('.tryAgain');
@@ -47,11 +44,11 @@ function setup() {
   let blinkerInterval = null;
   let slowly = null;
 
-
   $begin.on('click' , ()=>{
     firstSound();
     gameSoundBegin();
     startTime();
+    $howToGuide.css('visibility', 'hidden');
     setTimeout(() => {
       policeUp();
     }, 2000);
@@ -99,16 +96,18 @@ function setup() {
     },2500);
   }
 
-  function appear(){
-    console.log('inside appear()');
-    console.log(policeInSight);
-    $police.animate({ top: 775 }, timeUp, disappear);
+  function spraySound() {
+    if (currentSection < 16){
+      $spraySound[0].play();
+    }
   }
 
-  function disappear(){
+  function appear(){
+    $police.animate({ top: 775 }, timeUp, visible);
+  }
+
+  function visible(){
     policeInSight = true;
-    console.log('inside disappear()');
-    console.log(policeInSight);
     setTimeout(() => {
       $police.animate({ top: 874 }, timeDown, policeUp);
     }, randomTime);
@@ -116,8 +115,6 @@ function setup() {
 
   function policeUp() {
     policeInSight = false;
-    console.log('inside policeUp()');
-    console.log(policeInSight);
     setTimeout(() => {
       appear();
     }, randomTime);
@@ -139,19 +136,26 @@ function setup() {
     $artist.css('transform', 'scaleX(1)');
   }
 
-  $('#right').mousedown(function(){
+  function startSpraying() {
     slowly = setInterval(function() {
       mousedown = true;
       sprayWall();
     }, 100);
-  }).mouseup(function() {
-    mousedown = false;
-    clearInterval(slowly);
-  });
+  }
 
+  function bugFix(e) {
+    e.preventDefault();
+  }
+
+  function bugFixPartTwo() {
+    mousedown = false;
+    $spraySound[0].pause();
+    clearInterval(slowly);
+  }
+
+  // find the div covering the current wall section
+  // update the opacity of that div
   function sprayWall() {
-    // find the div covering the current wall section
-    // update the opacity of that div
     currentOpacity = parseFloat($section.eq(currentSection).css('opacity'));
     newOpacity = currentOpacity + x;
     $section.eq(currentSection).css('opacity', newOpacity);
@@ -171,30 +175,15 @@ function setup() {
       $warning.css('color', '#f00');
     }
     if (warnings === 2){
-      blinkerInterval = setInterval(blinker, 500);
+      blinkerInterval = setInterval(() => {
+        blinker();
+      }, 500);
     }
     if (warnings === 3){
       $outcome.html('Unlucky bruvva! Maybe try and wait till the popo aint lookin\' next time! Have another crack when you\'re ready...');
-      clearInterval(intervalId);
-      policeInSight = false;
-      mousedown = false;
-      $scoreboard.html('Completed: 0%');
-      $warning.html('Warnings: 0');
-      $warning.css('color', '#000');
-      $section.css('opacity', '0');
-      $artist.css('left', 'auto');
-      clearInterval(blinkerInterval);
-      currentOpacity = null;
-      newOpacity = null;
-      score = 0;
-      warnings = 0;
-      timeRemaining = 120;
-      currentSection = 0;
-      $timer.html('Time Remaining: '+timeRemaining);
-      $(window).scrollTop(0);
+      mostResetChanges();
     }
   }
-
 
   function blinker() {
     $warning.fadeOut(200);
@@ -208,39 +197,48 @@ function setup() {
     }
   }
 
-  function reset() {
+  function mostResetChanges() {
     clearInterval(intervalId);
+    clearInterval(blinkerInterval);
     policeInSight = false;
     mousedown = false;
-    $gameMusic[0].pause();
-    $menuMusic[0].play();
-    $menu.addClass('intro');
-    $outcome.html('');
     $scoreboard.html('Completed: 0%');
     $warning.html('Warnings: 0');
     $warning.css('color', '#000');
+    $warning.fadeOut(0);
+    $warning.fadeIn(0);
     $section.css('opacity', '0');
     $artist.css('left', 'auto');
-    clearInterval(blinkerInterval);
     currentOpacity = null;
     newOpacity = null;
     score = 0;
     warnings = 0;
-    timeRemaining = 120;
+    timeRemaining = 60;
     currentSection = 0;
     $timer.html('Time Remaining: '+timeRemaining);
     $(window).scrollTop(0);
   }
 
+  function reset() {
+    $gameMusic[0].pause();
+    $menuMusic[0].play();
+    $menu.addClass('intro');
+    $outcome.html('');
+    mostResetChanges();
+  }
 
   $right
+    .on('mousedown', startSpraying)
     .on('mousedown', sprayWall)
-    .on('mouseup', moveRight);
+    .on('mousedown', spraySound)
+    .on('mouseup', moveRight)
+    .on('dragstart', bugFix);
   $left
     .on('mousedown', moveLeft)
     .on('mouseup', turnAround);
   $tryAgain.on('click', reset);
   $info.on('click', howToPlay);
+  $body.on('mouseup', bugFixPartTwo);
 }
 
 $(() => setup());
