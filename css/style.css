@@ -208,14 +208,6 @@ html.locked, html.locked body {
 /*responsive for ipad when horizontal*/
 @media screen and (max-width: 1024px) and (min-width: 520px) {
 
-menu {
-  max-height: 760px;
-}
-
-behind {
-  max-height: 760px;
-}
-
 #left{
   margin-left: -65px;
   height: 100px;
@@ -257,6 +249,87 @@ behind {
   margin-left: 10px;
   text-align: center;
   font-size: 15px;
+}
+
+.gArtist {
+  margin-left: 80px;
+}
+
+.policemen {
+  width: 180px;
+  height: 180px;
+  left: 300px;
+  top: 950px;
+}
+
+}
+
+@media screen and (max-width: 375px) {
+
+.menu {
+  height: 134vh;
+  width: 500px;
+}
+
+.poPoPopUp {
+  width: 400px;
+  padding-top: 100px;
+}
+
+.howToPlay {
+  margin-left: 19%;
+  height: 100px;
+  width: 300px;
+  padding-top: 80px;
+}
+
+.play {
+  margin-left: 32%;
+  padding-top: 130px;
+  height: 100px;
+  width: 170px;
+}
+
+#left{
+  margin-left: -65px;
+  height: 100px;
+  width: 150px;
+  margin-top: 5px;
+  display: inline;
+}
+
+#right{
+  margin-right: 60px;
+  height: 100px;
+  width: 150px;
+  margin-top: 5px;
+  display: inline;
+}
+
+.score {
+  font-family: 'Gloria Hallelujah', cursive;
+  display: inline-block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.time {
+  font-family: 'Gloria Hallelujah', cursive;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 5px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.warning {
+  font-family: 'Gloria Hallelujah', cursive;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 5px;
+  text-align: center;
+  font-size: 10px;
 }
 
 .gArtist {
