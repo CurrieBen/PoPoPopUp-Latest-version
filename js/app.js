@@ -141,11 +141,11 @@ function setup() {
     }, 100);
   }
 
-  function bugFix(e) {
+  function dragAwayFix(e) {
     e.preventDefault();
   }
 
-  function bugFixPartTwo() {
+  function dragAwayFixPartTwo() {
     mousedown = false;
     $spraySound[0].pause();
     clearInterval(slowly);
@@ -229,13 +229,13 @@ function setup() {
     .on('mousedown', sprayWall)
     .on('mousedown', spraySound)
     .on('mouseup', moveRight)
-    .on('dragstart', bugFix);
+    .on('dragstart', dragAwayFix);
   $left
     .on('mousedown', moveLeft)
     .on('mouseup', turnAround);
   $tryAgain.on('click', reset);
   $info.on('click', howToPlay);
-  $body.on('mouseup', bugFixPartTwo);
+  $body.on('mouseup', dragAwayFixPartTwo);
 }
 
 $(() => setup());
