@@ -44,6 +44,7 @@ function setup() {
   let blinkerInterval = null;
   let slowly = null;
   let windowHeight = screen.height;
+  let windowWidth = screen.width;
 
   function openingSequence() {
     firstSound();
@@ -104,7 +105,7 @@ function setup() {
 console.log(windowHeight);
 
   function appear(){
-    if (parseInt(windowHeight) <= 400 ) {
+    if (parseInt(windowHeight) <= 400 || parseInt(windowWidth) <= 680) {
       $police.animate({ top: -30 }, timeUp, visible);
     } else {
       $police.animate({ top: -150 }, timeUp, visible);
