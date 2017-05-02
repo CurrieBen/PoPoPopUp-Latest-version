@@ -107,22 +107,21 @@ html.locked, html.locked body {
   border: 2px solid #00f;*/
 }
 
-/*.policemen {
+.policeman {
   position: absolute;
   background-image: url(../images/policeman.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 200px;
-  height: auto;
-  left: 600px;
-  top: 990px;
+  height: 270px;
+  width: 300px;
+  margin-left: 25%;
   margin-top: 2%;
-  z-index: -1;
-}*/
+  z-index: 9999;
+}
 
 .gamePlayScreen {
   height: 100vh;
-  background-color: pink;
+  z-index: 1;
 }
 
 .Wall {
@@ -140,10 +139,25 @@ html.locked, html.locked body {
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .Wall {
-      height: 200px;
+      height: 180px;
       width: 550px;
       margin-left: 65px;
-      margin-top: 50px;
+      margin-top: 40px;
+    }
+    div.gArtist {
+      height: 130px;
+      width: 130px;
+    }
+    div.movementControls img {
+      height: 80px;
+      margin-top: 3%;
+    }
+    div.movementControls #right {
+      height: 65px;
+    }
+    div.policeman {
+      height: 120px;
+      width: 120px;
     }
 }
 
@@ -161,33 +175,25 @@ html.locked, html.locked body {
 }
 
 .gArtist {
-  /*position: absolute;
+  position: absolute;
   background-image: url(../images/graff.png);
   background-size: contain;
   background-repeat: no-repeat;
-  margin-left: 131px;
-  width: 120px;
-  height: 350px;
-  margin-top: 10%;
-  z-index: 3;*/
+  height: 275px;
+  width: 250px;
+  margin-top: 15%;
+  z-index: 3;
+}
+
+.movementControls img {
+  height: 130px;
+  width: auto;
+  margin-top: 7%;
 }
 
 #left{
-  /*margin-left: 35%;
-  height: 80px;
-  width: 150px;
-  outline: 0 !important;
-  margin-top: 15px;*/
-}
-
-#right{
-  /*margin-right: 35%;
-  height: 100px;
-  width: 150px;
-  outline: 0 !important;
-  margin-top: 15px;
-  z-index: 99999;
-  position: relative;*/
+  margin-left: 30%;
+  padding: 15px;
 }
 
 .lose {

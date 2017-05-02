@@ -10,7 +10,7 @@ function setup() {
   });
 
   const $body = $('body');
-  const $police = $('.policemen');
+  const $police = $('.policeman');
   const $right = $('#right');
   const $left = $('#left');
   const $artist = $('.gArtist');
@@ -43,6 +43,7 @@ function setup() {
   let intervalId = null;
   let blinkerInterval = null;
   let slowly = null;
+  let windowHeight = screen.height;
 
   function openingSequence() {
     firstSound();
@@ -100,14 +101,20 @@ function setup() {
     $spraySound[0].play();
   }
 
+console.log(windowHeight);
+
   function appear(){
-    $police.animate({ top: 775 }, timeUp, visible);
+    if (parseInt(windowHeight) === 375 ) {
+      $police.animate({ top: -65 }, timeUp, visible);
+    } else {
+      $police.animate({ top: -150 }, timeUp, visible);
+    }
   }
 
   function visible(){
     policeInSight = true;
     setTimeout(() => {
-      $police.animate({ top: 874 }, timeDown, policeUp);
+      $police.animate({ top: 30 }, timeDown, policeUp);
     }, randomTime);
   }
 
