@@ -46,6 +46,7 @@ html.locked, html.locked body {
 }
 
 .score {
+  padding-top: 22px;
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
   font-size: 1.2em;
@@ -53,6 +54,7 @@ html.locked, html.locked body {
 }
 
 .time {
+  padding-top: 22px;
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
   font-size: 1.2em;
@@ -60,6 +62,7 @@ html.locked, html.locked body {
 }
 
 .warning {
+  padding-top: 22px;
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
   font-size: 1.2em;
@@ -104,28 +107,44 @@ html.locked, html.locked body {
   border: 2px solid #00f;*/
 }
 
-.policemen {
-  /*position: absolute;
+/*.policemen {
+  position: absolute;
   background-image: url(../images/policeman.png);
   background-size: contain;
   background-repeat: no-repeat;
   width: 200px;
-  height: 200px;
+  height: auto;
   left: 600px;
   top: 990px;
   margin-top: 2%;
-  z-index: -1;*/
+  z-index: -1;
+}*/
+
+.gamePlayScreen {
+  height: 100vh;
+  background-color: pink;
 }
 
 .Wall {
-  /*background-image: url(../images/brick.png);
+  background-image: url(../images/brick.png);
   background-size: contain;
-  height: 50;
-  margin: 8% 8% 2% 8%;
+  height: 400px;
+  margin-top: 10%;
   display: block;
-  margin-top: 6%;
   background-position: center;
-  z-index: 2;*/
+  z-index: 2;
+}
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .Wall {
+      height: 200px;
+      width: 550px;
+      margin-left: 65px;
+      margin-top: 50px;
+    }
 }
 
 .graff {
@@ -169,10 +188,6 @@ html.locked, html.locked body {
   margin-top: 15px;
   z-index: 99999;
   position: relative;*/
-}
-
-.behind {
-  /*height: 100vh;*/
 }
 
 .lose {
