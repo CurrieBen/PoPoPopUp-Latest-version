@@ -106,7 +106,7 @@ console.log(windowHeight);
 
   function appear(){
     if (parseInt(windowHeight) <= 400 || parseInt(windowWidth) <= 680) {
-      $police.animate({ top: -30 }, timeUp, visible);
+      $police.animate({ top: -65 }, timeUp, visible);
     } else {
       $police.animate({ top: -150 }, timeUp, visible);
     }
