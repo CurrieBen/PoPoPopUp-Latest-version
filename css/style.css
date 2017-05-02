@@ -125,7 +125,7 @@ html.locked, html.locked body {
   background-image: url(../images/brick.png);
   position: absolute;
   background-size: contain;
-  height: 400px;
+  height: 375px;
   margin-top: 10%;
   display: block;
   background-position: center;
@@ -194,9 +194,9 @@ html.locked, html.locked body {
 }
 
 .movementControls img {
-  height: 130px;
+  height: 110px;
   width: auto;
-  margin-top: 7%;
+  margin-top: 8%;
 }
 
 #left{
