@@ -114,7 +114,7 @@ console.log(windowHeight);
   function visible(){
     policeInSight = true;
     setTimeout(() => {
-      $police.animate({ top: 30 }, timeDown, policeUp);
+      $police.animate({ top: 0 }, timeDown, policeUp);
     }, randomTime);
   }
 

@@ -33,14 +33,12 @@ html.locked, html.locked body {
 
 .howToPlay {
   margin: auto;
-  padding-top: 5%;
   display: none;
   width: 40%;
 }
 
 .play {
   margin: auto;
-  padding-top: 5%;
   display: none;
   width: 25%;
 }
@@ -49,7 +47,7 @@ html.locked, html.locked body {
   padding-top: 22px;
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -57,7 +55,7 @@ html.locked, html.locked body {
   padding-top: 22px;
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -65,7 +63,7 @@ html.locked, html.locked body {
   padding-top: 22px;
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -112,26 +110,26 @@ html.locked, html.locked body {
   background-image: url(../images/policeman.png);
   background-size: contain;
   background-repeat: no-repeat;
-  height: 270px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   margin-left: 25%;
   margin-top: 2%;
-  z-index: 9999;
+  z-index: -1;
 }
 
 .gamePlayScreen {
   height: 100vh;
-  z-index: 1;
 }
 
 .Wall {
   background-image: url(../images/brick.png);
+  position: absolute;
   background-size: contain;
   height: 400px;
   margin-top: 10%;
   display: block;
   background-position: center;
-  z-index: 2;
+  width: 80vw;
 }
 
 @media only screen
@@ -148,6 +146,9 @@ html.locked, html.locked body {
       height: 130px;
       width: 130px;
     }
+    div.movementControls {
+      margin-top: 33%;
+    }
     div.movementControls img {
       height: 80px;
       margin-top: 3%;
@@ -158,6 +159,9 @@ html.locked, html.locked body {
     div.policeman {
       height: 120px;
       width: 120px;
+    }
+    .score, .time, .warning  {
+      font-size: 15px;
     }
 }
 
@@ -183,6 +187,10 @@ html.locked, html.locked body {
   width: 250px;
   margin-top: 15%;
   z-index: 3;
+}
+
+.movementControls {
+  margin-top: 43%;
 }
 
 .movementControls img {
