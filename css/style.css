@@ -9,8 +9,8 @@ html.locked, html.locked body {
 
 .menu {
   height: 100vh;
-  max-width: 1600px;
   background-color: black;
+  text-align: center;
 }
 
 .menu.intro .newTry {
@@ -24,77 +24,70 @@ html.locked, html.locked body {
 }
 
 .poPoPopUp {
-  margin: 0 auto 20px;
+  margin: auto;
+  margin-top: 20px;
   display: none;
+  width: 50%;
+  text-align: center;
 }
 
 .howToPlay {
   margin: auto;
-  margin-left: 30%;
+  padding-top: 5%;
   display: none;
-  height: 150px;
-  width: 500px;
+  width: 40%;
 }
 
 .play {
   margin: auto;
-  margin-left: 40%;
-  padding-top: 50px;
+  padding-top: 5%;
   display: none;
-  height: 150px;
-  width: 250px;
+  width: 25%;
 }
 
 .score {
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
-  margin-top: 35px;
-  margin-left: 15%;
-  margin-right: 200px;
+  font-size: 1.2em;
   text-align: center;
-  font-size: 25px;
 }
 
 .time {
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
-  margin-top: 35px;
-  margin-right: 200px;
+  font-size: 1.2em;
   text-align: center;
-  font-size: 25px;
 }
 
 .warning {
   font-family: 'Gloria Hallelujah', cursive;
   display: inline-block;
-  margin-top: 35px;
-  margin-right: 10%;
+  font-size: 1.2em;
   text-align: center;
-  font-size: 25px;
 }
 
 .outcome {
-  width: 100%;
+  /*width: 100%;
   font-size: 60px;
   text-align: center;
   color: #f00;
-  font-family: 'Caveat Brush', cursive;
+  font-family: 'Caveat Brush', cursive;*/
 }
 
 .tryAgain {
-  height: 250px;
-  margin: 50px auto 0;
+  /*height: 250px;
+  margin: 50px auto 0;*/
 }
 
 .newTry {
-  position: absolute;
+  /*position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
 }
 
 .howToGuide {
-  font-family: 'Gloria Hallelujah', cursive;
+  /*font-family: 'Gloria Hallelujah', cursive;
   background-color: #fff;
   color: #000;
   height: 500px;
@@ -108,11 +101,11 @@ html.locked, html.locked body {
   left: 20px;
   transform: translateY(-50%);
   border-radius: 10px;
-  border: 2px solid #00f;
+  border: 2px solid #00f;*/
 }
 
 .policemen {
-  position: absolute;
+  /*position: absolute;
   background-image: url(../images/policeman.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -121,27 +114,22 @@ html.locked, html.locked body {
   left: 600px;
   top: 990px;
   margin-top: 2%;
-  z-index: -1;
+  z-index: -1;*/
 }
 
 .Wall {
-  background-image: url(../images/brick.png);
+  /*background-image: url(../images/brick.png);
   background-size: contain;
-  height: 350px;
+  height: 50;
   margin: 8% 8% 2% 8%;
   display: block;
   margin-top: 6%;
   background-position: center;
-  z-index: 2;
-}
-
-.container {
-  margin-top: 5%;
-  margin-left: 20%;
+  z-index: 2;*/
 }
 
 .graff {
-  background-image: url(../images/graff2.png);
+  /*background-image: url(../images/graff2.png);
   background-position: center;
   background-attachment: fixed;
   opacity: 0;
@@ -150,11 +138,11 @@ html.locked, html.locked body {
   padding: 0px;
   margin-top: 2%;
   float: left;
-  position: relative;
+  position: relative;*/
 }
 
 .gArtist {
-  position: absolute;
+  /*position: absolute;
   background-image: url(../images/graff.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -162,185 +150,38 @@ html.locked, html.locked body {
   width: 120px;
   height: 350px;
   margin-top: 10%;
-  z-index: 3;
-}
-
-.Pavement {
-  height: 80px;
-  background-color: pink;
-  z-index: 1;
-  overflow: auto;
+  z-index: 3;*/
 }
 
 #left{
-  margin-left: 35%;
+  /*margin-left: 35%;
   height: 80px;
   width: 150px;
   outline: 0 !important;
-  margin-top: 15px;
+  margin-top: 15px;*/
 }
 
 #right{
-  margin-right: 35%;
+  /*margin-right: 35%;
   height: 100px;
   width: 150px;
   outline: 0 !important;
   margin-top: 15px;
   z-index: 99999;
-  position: relative;
+  position: relative;*/
 }
 
 .behind {
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
 .lose {
-  position: fixed;
+  /*position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   background-color: grey;
   z-index: 100;
-  display: none;
-}
-
-/*responsive for ipad when horizontal*/
-@media screen and (max-width: 1024px) and (min-width: 520px) {
-
-#left{
-  margin-left: -65px;
-  height: 100px;
-  width: 150px;
-  margin-top: 5px;
-  display: inline;
-}
-
-#right{
-  margin-right: 60px;
-  height: 100px;
-  width: 150px;
-  margin-top: 5px;
-  display: inline;
-}
-
-.score {
-  font-family: 'Gloria Hallelujah', cursive;
-  display: inline-block;
-  margin-top: 50px;
-  margin-left: 160px;
-  text-align: center;
-  font-size: 15px;
-}
-
-.time {
-  font-family: 'Gloria Hallelujah', cursive;
-  display: inline-block;
-  margin-top: 50px;
-  margin-left: 10px;
-  text-align: center;
-  font-size: 15px;
-}
-
-.warning {
-  font-family: 'Gloria Hallelujah', cursive;
-  display: inline-block;
-  margin-top: 50px;
-  margin-left: 10px;
-  text-align: center;
-  font-size: 15px;
-}
-
-.gArtist {
-  margin-left: 80px;
-}
-
-.policemen {
-  width: 180px;
-  height: 180px;
-  left: 300px;
-  top: 950px;
-}
-
-}
-
-@media screen and (max-width: 375px) {
-
-.menu {
-  height: 134vh;
-  width: 500px;
-}
-
-.poPoPopUp {
-  width: 400px;
-  padding-top: 100px;
-}
-
-.howToPlay {
-  margin-left: 19%;
-  height: 100px;
-  width: 300px;
-  padding-top: 80px;
-}
-
-.play {
-  margin-left: 32%;
-  padding-top: 130px;
-  height: 100px;
-  width: 170px;
-}
-
-#left{
-  margin-left: -65px;
-  height: 100px;
-  width: 150px;
-  margin-top: 5px;
-  display: inline;
-}
-
-#right{
-  margin-right: 60px;
-  height: 100px;
-  width: 150px;
-  margin-top: 5px;
-  display: inline;
-}
-
-.score {
-  font-family: 'Gloria Hallelujah', cursive;
-  display: inline-block;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 10px;
-}
-
-.time {
-  font-family: 'Gloria Hallelujah', cursive;
-  display: inline-block;
-  margin-top: 10px;
-  margin-left: 5px;
-  text-align: center;
-  font-size: 10px;
-}
-
-.warning {
-  font-family: 'Gloria Hallelujah', cursive;
-  display: inline-block;
-  margin-top: 10px;
-  margin-left: 5px;
-  text-align: center;
-  font-size: 10px;
-}
-
-.gArtist {
-  margin-left: 80px;
-}
-
-.policemen {
-  width: 180px;
-  height: 180px;
-  left: 300px;
-  top: 950px;
-}
-
+  display: none;*/
 }

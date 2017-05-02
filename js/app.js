@@ -56,7 +56,7 @@ function setup() {
       $menu.removeClass('intro');
     }, 2000);
     $('html, body').animate({ scrollTop: $(document).height() }, 2000, () => {
-      $('html').addClass('locked');
+      // $('html').addClass('locked');
     });
     menuSoundEnd();
     event.preventDefault();
