@@ -112,7 +112,7 @@ function setup() {
   }
 
   function visible(){
-    // policeInSight = true;
+    policeInSight = true;
     setTimeout(() => {
       $police.animate({ top: 0 }, timeDown, policeUp);
     }, randomTime);
