@@ -32,7 +32,7 @@ function setup() {
   const timeUp = 2000;
   const timeDown = 1500;
   const x = 0.03;
-  let currentSection = 0;
+  let currentSection = 2;
   let mousedown = false;
   let policeInSight = false;
   let currentOpacity = null;
@@ -41,7 +41,6 @@ function setup() {
   let warnings = 0;
   let timeRemaining = 60;
   let intervalId = null;
-  let blinkerInterval = null;
   let slowly = null;
   let windowHeight = screen.height;
   let windowWidth = screen.width;
@@ -102,8 +101,6 @@ function setup() {
     $spraySound[0].play();
   }
 
-console.log(windowHeight);
-
   function appear(){
     if (parseInt(windowHeight) <= 400 || parseInt(windowWidth) <= 680) {
       $police.animate({ top: -65 }, timeUp, visible);
@@ -127,13 +124,13 @@ console.log(windowHeight);
   }
 
   function moveRight(){
-    $artist.animate({ left: '+=53px' }, 'slow');
+    $artist.animate({ left: '+=90px' }, 'slow');
     currentSection++;
     $artist.css('transform', 'scaleX(1)');
   }
 
   function moveLeft(){
-    $artist.animate({ left: '-=53px' }, 'slow');
+    $artist.animate({ left: '-=90px' }, 'slow');
     currentSection--;
     $artist.css('transform', 'scaleX(-1)');
   }
@@ -165,10 +162,11 @@ console.log(windowHeight);
     currentOpacity = parseFloat($section.eq(currentSection).css('opacity'));
     newOpacity = currentOpacity + x;
     $section.eq(currentSection).css('opacity', newOpacity);
-    if (parseFloat(newOpacity)<1){
+    if (parseFloat(newOpacity)<1 && currentSection > 1 && currentSection < 11){
       score++;
     }
-    $scoreboard.html('Completed: ' + Math.round(score/5.28) + '%');
+    // $scoreboard.html('Completed: ' + score);
+    $scoreboard.html('Completed: ' + Math.round(score/2.64) + '%');
     checkCaught();
   }
 
@@ -180,26 +178,15 @@ console.log(windowHeight);
     if (warnings >= 1){
       $warning.css('color', '#f00');
     }
-    if (warnings === 2){
-      blinkerInterval = setInterval(() => {
-        blinker();
-      }, 500);
-    }
     if (warnings === 3){
       $outcome.html('Unlucky bruvva! Maybe try and wait till the popo aint lookin\' next time! Have another crack when you\'re ready...');
       mostResetChanges();
-      clearInterval(blinkerInterval);
     }
-  }
-
-  function blinker() {
-    $warning.fadeOut(200);
-    $warning.fadeIn(200);
   }
 
   function checkWin() {
     if(timeRemaining === 0 && warnings < 3 ){
-      $outcome.html('Nice one Bruvva! You got '+ Math.round(score/5.28) + '% of the painting done!');
+      $outcome.html('Nice one Bruvva! You got '+ Math.round(score/2.64) + '% of the painting done!');
       $(window).scrollTop(0);
     }
   }
@@ -218,7 +205,7 @@ console.log(windowHeight);
     score = 0;
     warnings = 0;
     timeRemaining = 60;
-    currentSection = 0;
+    currentSection = 2;
     $timer.html('Time Remaining: '+timeRemaining);
     $(window).scrollTop(0);
   }

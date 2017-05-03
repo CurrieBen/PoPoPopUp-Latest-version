@@ -166,16 +166,16 @@ html.locked, html.locked body {
 }
 
 .graff {
-  /*background-image: url(../images/graff2.png);
+  background-image: url(../images/graff2.png);
   background-position: center;
   background-attachment: fixed;
   opacity: 0;
-  width: 50px;
-  height: 300px;
+  width: 100px;
+  height: 320px;
   padding: 0px;
   margin-top: 2%;
   float: left;
-  position: relative;*/
+  position: relative;
 }
 
 .gArtist {
@@ -186,6 +186,7 @@ html.locked, html.locked body {
   height: 275px;
   width: 250px;
   margin-top: 15%;
+  margin-left: 7%;
   z-index: 3;
 }
 
