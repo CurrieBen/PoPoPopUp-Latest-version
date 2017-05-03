@@ -32,7 +32,7 @@ function setup() {
   const timeUp = 2000;
   const timeDown = 1500;
   const x = 0.03;
-  let currentSection = 2;
+  let currentSection = 1;
   let mousedown = false;
   let policeInSight = false;
   let currentOpacity = null;
@@ -110,7 +110,7 @@ function setup() {
   }
 
   function visible(){
-    policeInSight = true;
+    // policeInSight = true;
     setTimeout(() => {
       $police.animate({ top: 0 }, timeDown, policeUp);
     }, randomTime);
@@ -124,7 +124,11 @@ function setup() {
   }
 
   function moveRight(){
-    $artist.animate({ left: '+=90px' }, 'slow');
+    if (parseInt(windowHeight) <= 400 || parseInt(windowWidth) <= 680) {
+      $artist.animate({ left: '+=30px' }, 'slow');
+    } else {
+      $artist.animate({ left: '+=90px' }, 'slow');
+    }
     currentSection++;
     $artist.css('transform', 'scaleX(1)');
   }
@@ -162,10 +166,9 @@ function setup() {
     currentOpacity = parseFloat($section.eq(currentSection).css('opacity'));
     newOpacity = currentOpacity + x;
     $section.eq(currentSection).css('opacity', newOpacity);
-    if (parseFloat(newOpacity)<1 && currentSection > 1 && currentSection < 11){
+    if (parseFloat(newOpacity)<1 && currentSection > 0 && currentSection < 9){
       score++;
     }
-    // $scoreboard.html('Completed: ' + score);
     $scoreboard.html('Completed: ' + Math.round(score/2.64) + '%');
     checkCaught();
   }
@@ -185,8 +188,12 @@ function setup() {
   }
 
   function checkWin() {
-    if(timeRemaining === 0 && warnings < 3 ){
-      $outcome.html('Nice one Bruvva! You got '+ Math.round(score/2.64) + '% of the painting done!');
+    if (score === 264 && warnings < 3) {
+      $outcome.html('Nice one Bruvva! You smashed it! Maybe you should be teaching me?!');
+      $(window).scrollTop(0);
+    }
+    if(timeRemaining === 0 && warnings < 3 && score < 264){
+      $outcome.html('Nearly Bruvva! You got '+ Math.round(score/2.64) + '% of the painting done!');
       $(window).scrollTop(0);
     }
   }
@@ -205,7 +212,7 @@ function setup() {
     score = 0;
     warnings = 0;
     timeRemaining = 60;
-    currentSection = 2;
+    currentSection = 1;
     $timer.html('Time Remaining: '+timeRemaining);
     $(window).scrollTop(0);
   }

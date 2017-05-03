@@ -163,6 +163,21 @@ html.locked, html.locked body {
     .score, .time, .warning  {
       font-size: 15px;
     }
+    div.graff {
+      background-image: url(../images/graff2.png);
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 1;
+      width: 40px;
+      height: 150px;
+      padding-right: 40px;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+}
+
+.graffitiBox {
+  margin-left: 70px;
 }
 
 .graff {
@@ -191,17 +206,28 @@ html.locked, html.locked body {
 }
 
 .movementControls {
-  margin-top: 43%;
+  margin-top: 53%;
+}
+
+button {
+  width: 250px;
+  height: 125px;
+  padding: 5px 6px 5px 30px;
+  background-color: #fff;
+  border-style: none;
+}
+button:focus {
+  outline: 0;
 }
 
 .movementControls img {
   height: 110px;
   width: auto;
-  margin-top: 8%;
+  margin-top: -7%;
 }
 
 #left{
-  margin-left: 30%;
+  margin-left: 25%;
   padding: 15px;
 }
 
