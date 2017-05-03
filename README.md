@@ -9,6 +9,7 @@
 This is a game of patience and timing. You need both to be successful! The aim of the game is to complete the painting before the timer runs out whilst also trying to avoid being caught by the policeman as he appears from behind the wall at random intervals.
 
 #####[Play it here!](https://afternoon-harbor-39704.herokuapp.com/)
+#### IF USING MOBILE - HOLD HORIZONTALLY!
 
 
 ![](./images/PoPoPopUpMain.png)
