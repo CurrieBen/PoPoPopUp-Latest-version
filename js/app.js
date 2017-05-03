@@ -1,7 +1,9 @@
 console.log('JS loaded');
 
-//namespace
-
+// doesn't work on most browsers yet
+// if (parseInt(windowHeight) <= 400 || parseInt(windowWidth) <= 680) {
+//   lockedAllowed = window.screen.lockOrientation(landscape);
+// };
 
 function setup() {
 
@@ -57,7 +59,7 @@ function setup() {
       $menu.removeClass('intro');
     }, 2000);
     $('html, body').animate({ scrollTop: $(document).height() }, 2000, () => {
-      // $('html').addClass('locked');
+      $('html').addClass('locked');
     });
     menuSoundEnd();
     event.preventDefault();
@@ -134,7 +136,11 @@ function setup() {
   }
 
   function moveLeft(){
-    $artist.animate({ left: '-=90px' }, 'slow');
+    if (parseInt(windowHeight) <= 400 || parseInt(windowWidth) <= 680) {
+      $artist.animate({ left: '-=30px' }, 'slow');
+    } else {
+      $artist.animate({ left: '-=90px' }, 'slow');
+    }
     currentSection--;
     $artist.css('transform', 'scaleX(-1)');
   }

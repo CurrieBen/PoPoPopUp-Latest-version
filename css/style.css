@@ -68,41 +68,40 @@ html.locked, html.locked body {
 }
 
 .outcome {
-  /*width: 100%;
-  font-size: 60px;
+  font-size: 30px;
+  margin-top: 125%;
   text-align: center;
   color: #f00;
-  font-family: 'Caveat Brush', cursive;*/
+  font-family: 'Caveat Brush', cursive;
 }
 
 .tryAgain {
-  /*height: 250px;
-  margin: 50px auto 0;*/
+  height: 250px;
+  margin-top: 15%;
 }
 
 .newTry {
-  /*position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);*/
+  transform: translate(-50%, -50%);
 }
 
 .howToGuide {
-  /*font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Gloria Hallelujah', cursive;
   background-color: #fff;
   color: #000;
-  height: 500px;
-  width: 300px;
+  height: 330px;
+  width: 330px;
   text-align: center;
   float: left;
   display: inline;
   visibility: hidden;
   position: fixed;
-  top: 55%;
+  top: 30%;
   left: 20px;
-  transform: translateY(-50%);
   border-radius: 10px;
-  border: 2px solid #00f;*/
+  border: 2px solid #00f;
 }
 
 .policeman {
@@ -147,14 +146,15 @@ html.locked, html.locked body {
       width: 130px;
     }
     div.movementControls {
-      margin-top: 33%;
+      margin-top: 37%;
     }
     div.movementControls img {
-      height: 80px;
+      height: 70px;
+      width: auto;
       margin-top: 3%;
     }
-    div.movementControls #right {
-      height: 65px;
+    div.movementControls #left {
+      margin-left: 36%;
     }
     div.policeman {
       height: 120px;
@@ -167,12 +167,24 @@ html.locked, html.locked body {
       background-image: url(../images/graff2.png);
       background-position: center;
       background-attachment: fixed;
-      opacity: 1;
+      opacity: 0;
       width: 40px;
       height: 150px;
       padding-right: 40px;
       background-repeat: no-repeat;
       position: relative;
+    }
+    div.howToGuide {
+      height: 330px;
+      width: 330px;
+      top: 5%;
+      left: 25%;
+    }
+    .tryAgain {
+      margin-top: -50%;
+    }
+    .outcome {
+      margin-top: 80%;
     }
 }
 
@@ -209,35 +221,12 @@ html.locked, html.locked body {
   margin-top: 53%;
 }
 
-button {
-  width: 250px;
-  height: 125px;
-  padding: 5px 6px 5px 30px;
-  background-color: #fff;
-  border-style: none;
-}
-button:focus {
-  outline: 0;
-}
-
 .movementControls img {
   height: 110px;
   width: auto;
-  margin-top: -7%;
 }
 
 #left{
-  margin-left: 25%;
+  margin-left: 33%;
   padding: 15px;
-}
-
-.lose {
-  /*position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: grey;
-  z-index: 100;
-  display: none;*/
 }
