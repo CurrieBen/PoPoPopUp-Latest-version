@@ -42,7 +42,7 @@ There are sounds that are triggered upon:
 * Animation was done using jQuery.
 * The Google Web Font 'Gloria Hallelujah' and 'Caveat Brush' have been used to style the game.
 
-![](./images/PoPoPopUpMidGame.png)
+![](./images/mobileview.png)
 
 
 #### Problems & Challenges
